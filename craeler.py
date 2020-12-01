@@ -20,3 +20,5 @@ n = root.find_all("span", style="font-size:20px;")
 for m in n:
     if m.a == None:
         print(m.string)
+
+print("/////////")
