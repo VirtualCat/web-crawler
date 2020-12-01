@@ -1,4 +1,5 @@
 import urllib.request as req
+import bs4
 
 url = 'https://netreg.isu.edu.tw/Wapp/Wap_indexmain2.asp'
 
@@ -10,4 +11,12 @@ request = req.Request(url, headers={
 with req.urlopen(request) as response:
     data = response.read().decode("utf-8")
 
-print(data)
+#print(data)
+
+root = bs4.BeautifulSoup(data, "html.parser")
+
+n = root.find_all("span", style="font-size:20px;")
+
+for m in n:
+    if m.a == None:
+        print(m.string)
